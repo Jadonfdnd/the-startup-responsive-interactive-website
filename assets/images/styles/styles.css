@@ -1,0 +1,181 @@
+body{
+    display: grid;
+}
+ 
+/* --- Header Layout --- */
+header {
+    display: flex;
+    justify-content: space-between; /* logo naar links  search naar rechts*/
+    align-items: center;            /* Centers items vertically */
+    padding: 10px 40px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-silver);
+    position-anchor: initial;
+    top: 0;
+    z-index: 100;
+}
+
+header > img {
+    height: 50px;
+    width: auto;
+}
+
+/* Nav Childs */
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Space between the UL and the login button/form */
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px; /* Space tussen menu items */
+}
+
+header nav ul li {
+    font-weight: 600;
+    color: #255a8f; /* Using the Deep Marine color */
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/* search in nav */
+header nav form {
+    display: flex;
+    align-items: center;
+    background: var(--bg-light);
+    border-radius: var(--radius);
+    padding: 5px 10px;
+}
+
+header nav form input {
+    border: none;
+    background: transparent;
+    padding: 5px;
+    outline: none;
+}
+
+/* Hero section */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /*vanuit links alignen*/
+    padding: 40px 20px;
+    background-color: white;
+    overflow: hidden; /*background images zorgen niet voor scrollbar*/
+
+}
+/* kan weg ivm globale styleguide */
+.hero-section h1 {
+    font-size: 2.2rem;
+    max-width: 12ch;
+    color: #002e5d;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    font-weight: 800;
+    /* mediaquery line width.. */
+}
+/* later in styleguide  */
+.hero-section p {
+    font-size: 1.1rem;
+    color: #333333;
+    margin-bottom: 25px;
+}
+.hero-section button {
+    background-color: #6262ff; /* The specific button blue */
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    
+}
+
+.hero-section a::after {
+    content: ' >'; /* Adds the arrow without editing HTML */
+}
+
+/*  The Illustration */
+.hero-section img {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    /* This makes the image sit at the bottom of the section */
+}
+
+
+/* Pakket Navigatietabs*/
+.pakket-nav {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin: 20px;
+    overflow: hidden;
+}
+
+.pakket-nav ul {
+    display: flex;
+    list-style: none;
+    background-color: #F2F2F2;
+}
+
+.pakket-nav li {
+    flex: 1;
+    padding: 15px 5px;
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+}
+
+/* De actieve tab (eerste li in je HTML) */
+.pakket-nav li:first-child {
+    background-color: #ffffff;
+    border-bottom-color: #ED6B00; /* PostNL Oranje */
+}
+
+.pakket-nav h2 {
+    font-size: 0.8rem; /* Compact voor mobiel */
+    color: #002E5D;
+    font-weight: 700;
+}
+
+/* --- Formulier Styling --- */
+.tabcontent {
+    padding: 25px 20px;
+}
+
+.tabcontent form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tabcontent label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #333333;
+}
+
+.tabcontent input {
+    padding: 12px;
+    border: 1px solid #D1D1D1;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #666666;
+}
+
+.tabcontent button {
+    background-color: #6262FF;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 10px;
+    cursor: pointer;
+}

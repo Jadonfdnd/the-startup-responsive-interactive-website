@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <!-- <link rel="stylesheet" href="styles/styleguide"> -->
+    <link rel="stylesheet" href="assets/images/styles/styles.css">
+    <title>PostNL proto</title>
 </head>
 <body>
     <header>
-        <img src="/assets/images/postnldoos.jpg" alt="">
+        <img src="/assets/icons/Vector.svg" alt="">
         <nav>
             <ul>
                 <li>Versturen</li>
@@ -25,12 +27,15 @@
         </nav>
     </header>
     <main>
-        <h1>Grenzeloos groeien met je webwinkel</h1>
-        <p>Verstuuur het voordelig als brievenbuspakje</p>
-        <form><button></button></form>
-        <a href=""></a>
-        <img src="/assets/images/postnldoos.jpg" alt="">
-        
+
+        <section class="hero-section">
+            <h1>Grenzeloos groeien met je webwinkel</h1>
+            <p>Verstuur het voordelig als brievenbuspakje</p>
+            <form><button>Lees meer</button></form>
+            <a href="#todo">Link</a>
+            <img src="/assets/images/postnldoos.jpg" alt="">
+        </section>
+
         <section class="pakket-nav">
             <ul>
                 <li><h2>Volg je pakket</h2></li>
@@ -42,15 +47,22 @@
             <!-- Tab content -->
             <div class="tabcontent">
                 <!-- check workshop forms -->
-            <form> 
-                <label for="barcode">barcode</label>
-                <input type="text" required />
-                <label for="Ontvanger">Land van de Ontvanger</label>
-                <input type="text" required />
-                <label for="Postcode">Postcode</label>
-                <input type="text" required />
-                <button>Zoeken</button>
-            </form>
+                <form> 
+                    <label for="barcode">Barcode</label>
+                    <input type="text" id="barcode" required />
+
+                    <label for="ontvanger">Land van de Ontvanger</label>
+                    <select id="ontvanger" required>
+                        <option value="Nederland">Nederland</option>
+                        <option value="België">België</option>
+                        <option value="Duitsland">Duitsland</option>
+                    </select>
+
+                    <label for="postcode">Postcode</label>
+                    <input type="text" id="postcode" required />
+
+                    <button type="submit">Zoeken</button>
+                </form>
             </div>
         </section>
 
@@ -82,7 +94,7 @@
 
         <section class="section4">
             <h3>Met de PostNL-app heb je alles in de hand</h3>
-            <img src="//assets/images/postnldoos.jpg" alt="">  
+            <img src="/assets/images/postnldoos.jpg" alt="">  
             <p>Regel al je PostNL-zaken zoals jij dat wil. Maak en vestuur een fotokaart, koop een postzegelcode of bekijk welke post en pakketten er naar je onderweg zijn. Miljoenen tevreden gebruikers gingen je voor. Ben jj de volgende? Download 'm nu!</p>
             <button>Fotokaart versturen</button>
         </section>
