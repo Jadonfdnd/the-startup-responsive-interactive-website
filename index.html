@@ -2,8 +2,8 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="styles/styleguide"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/images/styles/styleguide.css">
     <link rel="stylesheet" href="assets/images/styles/styles.css">
     <title>PostNL proto</title>
 </head>
@@ -37,11 +37,12 @@
         </section>
 
         <section class="pakket-nav">
+            <!-- Volg je pakket Versturen PostNL locatiePostcode zoeken bij breakpoints-->
             <ul>
-                <li><h2>Volg je pakket</h2></li>
+                <li><h2>Pakket</h2></li>
                 <li><h2>Versturen</h2></li>
-                <li><h2>PostNL locatie</h2></li>
-                <li><h2>Postcode zoeken</h2></li>
+                <li><h2>Locaties</h2></li>
+                <li><h2>Postcodes</h2></li>
             </ul>
 
             <!-- Tab content -->
@@ -57,7 +58,7 @@
                         <option value="België">België</option>
                         <option value="Duitsland">Duitsland</option>
                     </select>
-
+                        <!-- eventueel verplichte postcode 1234ab -->
                     <label for="postcode">Postcode</label>
                     <input type="text" id="postcode" required />
 
@@ -66,36 +67,39 @@
             </div>
         </section>
 
-        <form>
-            <label for="Search">Ik ben op zoek naar...</label>
-            <input type="text"/>
+        <form class="search-form">
+            <label class="form-label" for="Search">Ik ben op zoek naar...</label>
+            <div class="input-wrapper">
+                <input class="form-input" type="text" id="Search" placeholder="Wat zoek je?" />
+            </div>
+            <button class="form-button" type="submit">🔍</button>
         </form>
 
         <section class="section1">
+            <img src="/assets/images/Illustration Package safeplace.png" alt="">
             <h3>Voorkeuren bezorging</h3>
-            <img src="/assets/images/postnldoos.jpg" alt="">
             <p>Vaak op pad? Bepaal zelf waar we je pakketten bezorgen:</p>
-            <a href=""></a>
+            <div class="section-footer-link"><a href="Link">Link</a></div>
         </section>
 
         <section class="section2">
+            <img src="/assets/images/Illustration.png" alt="">
             <h3>Track & Trace wereldwijd</h3>
-            <img src="/assets/images/postnldoos.jpg" alt="">
             <p>Track & Trace ook op de kleinste pakjes naar het buitenland, naar wel 75 landen.</p>
-            <a href=""></a>
+            <div class="section-footer-link"><a href="Link">Link</a></div>
         </section>
 
         <section class="section3">
+            <img src="/assets/images/Group 2.png" alt="">
             <h3>Nu 1 postzegel nodig?</h3>
-            <img src="/assets/images/postnldoos.jpg" alt="">
             <p>Verstuur je brief of kaart met een postzegelcode!</p>
-            <a href=""></a>
+            <div class="section-footer-link"><a href="Link">Link</a></div>
         </section>  
 
         <section class="section4">
-            <h3>Met de PostNL-app heb je alles in de hand</h3>
-            <img src="/assets/images/postnldoos.jpg" alt="">  
-            <p>Regel al je PostNL-zaken zoals jij dat wil. Maak en vestuur een fotokaart, koop een postzegelcode of bekijk welke post en pakketten er naar je onderweg zijn. Miljoenen tevreden gebruikers gingen je voor. Ben jj de volgende? Download 'm nu!</p>
+            <img src="/assets/images/contentpic.png" alt="">
+            <h3>Met de PostNL-app heb je alles in de hand</h3>  
+            <p>Regel al je PostNL-zaken zoals jij dat wil. Maak en vestuur een fotokaart, koop een postzegelcode of bekijk welke post en pakketten er naar je onderweg zijn. Miljoenen tevreden gebruikers gingen je voor. Ben jij de volgende? Download 'm nu!</p>
             <button>Fotokaart versturen</button>
         </section>
 

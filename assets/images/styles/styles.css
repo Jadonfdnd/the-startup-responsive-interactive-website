@@ -1,59 +1,34 @@
-body{
+main {
     display: grid;
-}
- 
-/* --- Header Layout --- */
-header {
-    display: flex;
-    justify-content: space-between; /* logo naar links  search naar rechts*/
-    align-items: center;            /* Centers items vertically */
-    padding: 10px 40px;
-    background-color: var(--white);
-    border-bottom: 1px solid var(--border-silver);
-    position-anchor: initial;
-    top: 0;
-    z-index: 100;
+    grid-template-columns: 1fr; /* Eén kolom die de volle breedte pakt */
+    gap: 20px; /* Automatische ruimte tussen je secties */
+    background-color: #F3F6F8; /* De grijze PostNL achtergrond */
 }
 
-header > img {
-    height: 50px;
-    width: auto;
+/* Elke section is nu een grid-item */
+.hero-section, 
+.pakket-nav, 
+.search-form {
+    width: 100%;
 }
 
-/* Nav Childs */
-header nav {
-    display: flex;
-    align-items: center;
-    gap: 40px; /* Space between the UL and the login button/form */
+.header {
+    display: grid;
+    /* Kolom 1 pakt de ruimte van het logo, kolom 2 pakt de rest (auto) */
+    grid-template-columns: auto 1fr; 
+    align-items: center; /* Zorgt dat alles verticaal mooi in het midden staat */
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #D1D1D1;
+    height: 60px;
 }
 
-header nav ul {
-    display: flex;
-    list-style: none;
-    gap: 20px; /* Space tussen menu items */
+.header-actions {
+    justify-self: end; /* Duwt de menu-knop naar de rechterkant */
 }
 
-header nav ul li {
-    font-weight: 600;
-    color: #255a8f; /* Using the Deep Marine color */
-    cursor: pointer;
-    font-size: 0.95rem;
-}
-
-/* search in nav */
-header nav form {
-    display: flex;
-    align-items: center;
-    background: var(--bg-light);
-    border-radius: var(--radius);
-    padding: 5px 10px;
-}
-
-header nav form input {
-    border: none;
-    background: transparent;
-    padding: 5px;
-    outline: none;
+.logo {
+    height: 30px; /* Houd het logo compact op mobiel */
 }
 
 /* Hero section */
@@ -64,8 +39,9 @@ header nav form input {
     padding: 40px 20px;
     background-color: white;
     overflow: hidden; /*background images zorgen niet voor scrollbar*/
-
+    max-width: fit-content;
 }
+
 /* kan weg ivm globale styleguide */
 .hero-section h1 {
     font-size: 2.2rem;
@@ -76,12 +52,7 @@ header nav form input {
     font-weight: 800;
     /* mediaquery line width.. */
 }
-/* later in styleguide  */
-.hero-section p {
-    font-size: 1.1rem;
-    color: #333333;
-    margin-bottom: 25px;
-}
+
 .hero-section button {
     background-color: #6262ff; /* The specific button blue */
     color: white;
@@ -95,36 +66,28 @@ header nav form input {
     
 }
 
-.hero-section a::after {
-    content: ' >'; /* Adds the arrow without editing HTML */
-}
-
-/*  The Illustration */
-.hero-section img {
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
-    /* This makes the image sit at the bottom of the section */
-}
-
-
 /* Pakket Navigatietabs*/
 .pakket-nav {
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    margin: 20px;
-    overflow: hidden;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+/* tab balk */
 .pakket-nav ul {
     display: flex;
+    width: 100%;
     list-style: none;
     background-color: #F2F2F2;
+    padding: 0;
+    margin: 0;
 }
 
 .pakket-nav li {
-    flex: 1;
+    flex: 1; /*naast elkaar*/
     padding: 15px 5px;
     text-align: center;
     border-bottom: 3px solid transparent;
@@ -138,14 +101,16 @@ header nav form input {
 }
 
 .pakket-nav h2 {
-    font-size: 0.8rem; /* Compact voor mobiel */
+    font-size: 0.8rem; /* Compact voor mobile first */
     color: #002E5D;
     font-weight: 700;
+    white-space: nowrap;
 }
 
-/* --- Formulier Styling --- */
+/* Formulier Styling */
 .tabcontent {
     padding: 25px 20px;
+    background-color: f1f1f2;
 }
 
 .tabcontent form {
@@ -178,4 +143,208 @@ header nav form input {
     font-size: 1rem;
     margin-top: 10px;
     cursor: pointer;
+}
+
+.tabcontent input, 
+.tabcontent select, 
+.tabcontent button {
+    height: 1em; 
+    width: 75%;
+    /* font-size: 16px; */
+}
+
+.search-form {
+    display: grid;
+    grid-template-columns: 1fr 60px; /* Kolom 1 pakt de rest, kolom 2 is voor de knop */
+    padding: 20px;
+    background: #fff;
+}
+
+.form-label {
+    grid-column: 1 / span 2; /* Label pakt de volledige breedte bovenop */
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #002E5D;
+}
+
+.form-input {
+    grid-column: 1; /* Staat in de eerste kolom */
+    height: 48px;
+    border: 1px solid #D1D1D1;
+    border-radius: 4px 0 0 4px;
+}
+
+.form-button {
+    grid-column: 2; /* Staat in de tweede kolom, naast de input */
+    height: 48px;
+    border-radius: 0 4px 4px 0;
+    background-color: #3E32E3;
+    color: white;
+    border: none;
+}
+
+/* info blocks */
+
+/* Alle 3 infocard section footers */
+.section-footer-link {
+    color: white;
+    padding: 1em;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    display: block; /* Zorgt dat de link de hele breedte pakt */
+    /* min-height: 0.5em; */
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.section-footer-link a {
+    color: white;
+    text-decoration: none;
+}
+.section1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #D83D00;
+    border-radius: 5px;
+    min-height: 30em;
+
+}
+
+.section1 img {
+    height: em;
+    margin: 2em;
+    
+    
+}
+
+
+.section1 h3 {
+    font-size: 1.2rem;
+    color:white; 
+    margin: 0;
+}
+
+.section1 p {
+    font-size: 0.95rem;
+    color: white;
+    line-height: 1.5;
+    
+}
+
+.section1 div {
+    background-color: #C23400;
+}
+
+/* section2 blue */
+.section2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #6161FF;
+    border-radius: 5px;
+    min-height: 30em;
+
+}
+
+.section2 img {
+    height: em;
+    margin: 2em;
+    
+    
+}
+
+
+.section2 h3 {
+    font-size: 1.2rem;
+    color:white; 
+    margin: 0;
+}
+
+.section2 p {
+    font-size: 0.95rem;
+    color: white;
+    line-height: 1.5;
+    
+}
+
+.section2 div{
+    background-color: #4E4EE2;
+}
+
+
+/* info blocks */
+.section3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #D83D00;
+    border-radius: 5px;
+    min-height: 30em;
+
+}
+
+.section3 img {
+    height: em;
+    margin: 2em;
+    
+    
+}
+
+.section3 h3 {
+    font-size: 1.2rem;
+    color:white; 
+    margin: 0;
+}
+
+.section3 p {
+    font-size: 0.95rem;
+    color: white;
+    line-height: 1.5;
+    
+}
+
+/* info blocks */
+.section3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #001A73;
+    border-radius: 5px;
+    min-height: 30em;
+
+}
+
+.section3 img {
+    height: em;
+    margin: 2em;
+    
+    
+}
+
+
+.section3 h3 {
+    font-size: 1.2rem;
+    color:white; 
+    margin: 0;
+}
+
+.section3 p {
+    font-size: 0.95rem;
+    color: white;
+    line-height: 1.5;
+    
+}
+
+.section3 div {
+    background-color: #001252;
+}
+
+
+/* content info cards */
+
+.section4 img {
+    width: 100%;
+}
+
+.section4 {
+    background-color: #F1F1F2;
+    margin-top: 1em;
 }
