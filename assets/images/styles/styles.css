@@ -2,7 +2,7 @@ main {
     display: grid;
     grid-template-columns: 1fr; /* Eén kolom die de volle breedte pakt */
     gap: 20px; /* Automatische ruimte tussen je secties */
-    background-color: #F3F6F8; /* De grijze PostNL achtergrond */
+    
 }
 
 /* Elke section is nu een grid-item */
@@ -347,4 +347,272 @@ main {
 .section4 {
     background-color: #F1F1F2;
     margin-top: 1em;
+}
+
+
+.section5 {
+    background-color: white;
+    /* veranderen? */
+    display: grid;
+    gap: 15px;
+    padding: 20px;
+}
+
+.section5 h3 {
+    color: #ED6B00; 
+    font-size: 1.4rem;
+    margin: 0;
+}
+.section5 ul {
+    list-style:  none;
+    margin: 0;
+    padding: 0;
+}
+
+.section5 li {
+    position: relative;
+    padding-left: 35px; /* Ruimte voor het vinkje */
+    margin-bottom: 12px;
+    line-height: 1.4;
+    font-size: 16px;
+    color: #333;
+}
+
+/* vinkje-icon toevoegen via CSS zonder html aan te passen */
+.section5 li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ED6B00'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+}
+
+.btn-account {
+    /* Gedrag en Formaat */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;             /* Volledige breedte voor mobiel */
+    height: 3em;            /* Ideale hoogte voor duimbesturing */
+    
+    /* Kleuren en Tekst */
+    background-color: white;
+    color: #3E32E3;
+    text-decoration: none;     /* Verwijder de onderstreping */
+    border: 2px solid #3E32E3;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: background-color 0.2s;
+}
+
+/* Effect wanneer je de knop indrukt op je scherm */
+.btn-account:active {
+    background-color: #2b22a8;
+}
+
+/* info tabs 2 */
+/* Veel post versturen */
+
+.section6 {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #F1F1F2;
+    border-radius: 5px;
+    min-height: 30em;
+    margin: 1em;
+    
+
+}
+
+.section6 img {
+    height: 6em;
+    margin: 2em;
+    
+    
+}
+
+
+.section6 h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    margin-left: 1em;
+    
+
+}
+
+.section6 p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-left: 1em;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.section6 div {
+    background-color: #E7E8EB;
+
+}
+
+.section6 a {
+    color: #3E32E3;
+}
+
+/* Altijd de juiste oplossingen */
+.section7 {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #F1F1F2;
+    border-radius: 5px;
+    min-height: 30em;
+    margin: 1em;
+    
+
+}
+
+.section7 img {
+    height: 6em;
+    margin: 2em;
+    
+    
+}
+
+
+.section7 h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    margin-left: 1em;
+    
+
+}
+
+.section7 p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-left: 1em;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.section7 div {
+    background-color: #E7E8EB;
+    
+}
+
+.section7 a {
+    color: #3E32E3;
+}
+
+
+/* Versturen naar het buitenland */
+
+.section8 img {
+    width: 100%;
+}
+
+.section8 {
+    margin-top: 1em;
+}
+/* 2 buttons 1 outline een geen */
+
+
+
+/* VARIANT 1: De Outline Button (Blauwe rand, witte vulling) */
+/* Zoals te zien in image_e31f4a.png */
+.btn-outline {
+    background-color: #ffffff;
+    color: #3E32E3;           /* PostNL Actieblauw */
+    border: 1.5px solid #3E32E3;
+    height: 2em;
+}
+
+.btn-link {
+    color: #3E32E3;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+}
+
+
+/* accordion footer voor mobile */
+.site-footer {
+    background-color: #F3F6F8; /* De lichtgrijze achtergrond uit image_24178d */
+    padding: 0;
+    border-top: 1px solid #D1D1D1;
+}
+
+.footer-group {
+    border-bottom: 1px solid #D1D1D1;
+}
+
+.footer-group h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin: 0;
+    font-size: 16px;
+    color: #002E5D; /* PostNL Navy */
+    cursor: pointer;
+}
+
+/* Het blauwe pijltje uit image_24178d */
+.footer-group h4::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid #3E32E3; /* PostNL Blauw */
+    border-bottom: 2px solid #3E32E3;
+    transform: rotate(45deg); /* Pijltje omlaag */
+    transition: transform 0.3s;
+}
+
+/* De lijst met links verbergen op mobiel */
+.footer-group ul {
+    list-style: none;
+    padding: 0 20px 20px 20px;
+    margin: 0;
+    display: none; /* Standaard inklappen */
+}
+
+.footer-group li {
+    padding: 8px 0;
+    color: #333;
+    font-size: 14px;
+}
+
+/* interactive gedeelte opzoeken..... */
+.footer-group.is-open ul {
+    display: block; /* Toon de links */
+}
+
+.footer-group.is-open h4::after {
+    transform: rotate(-135deg); /* Pijltje omhoog draaien */
+}
+
+/* responsive (naast elkaar) */
+@media (min-width: 768px) {
+    .footer-inner {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 gelijke kolommen */
+        gap: 30px;
+        padding: 40px;
+    }
+
+    .footer-group h4::after {
+        display: none; /* Pijltjes weg op desktop */
+    }
+
+    .footer-group ul {
+        display: block; /* Altijd zichtbaar op desktop */
+    }
+    
+    .footer-group {
+        border-bottom: none;
+    }
 }
