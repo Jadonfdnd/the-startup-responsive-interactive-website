@@ -578,6 +578,9 @@ main {
     padding: 0 20px 20px 20px;
     margin: 0;
     display: none; /* Standaard inklappen */
+    max-height: 0;       /* Begin op 0 hoogte */
+    overflow: hidden;    /* Verberg de tekst */
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
 }
 
 .footer-group li {
@@ -589,14 +592,27 @@ main {
 /* interactive gedeelte opzoeken..... */
 .footer-group.is-open ul {
     display: block; /* Toon de links */
+    max-height: 500px;   /* Geef het genoeg ruimte om uit te klappen */
+    padding: 0 20px 20px 20px;
+    opacity: 1;
 }
 
+/* feedforward pijltje draaien en replace met css */
 .footer-group.is-open h4::after {
     transform: rotate(-135deg); /* Pijltje omhoog draaien */
 }
 
+.footer-group h4 {
+    cursor: pointer;
+}
+
+/*  feedback voor desktop gebruikers */
+.footer-group h4:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
 /* responsive (naast elkaar) */
-@media (min-width: 768px) {
+@media (min-width: 600px) {
     .footer-inner {
         display: grid;
         grid-template-columns: repeat(4, 1fr); /* 4 gelijke kolommen */
