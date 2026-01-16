@@ -5,30 +5,40 @@ main {
     
 }
 
-/* Elke section is nu een grid-item */
+/* Elke section is nu een griditem */
 .hero-section, 
 .pakket-nav, 
 .search-form {
     width: 100%;
 }
-
-.header {
-    display: grid;
-    /* Kolom 1 pakt de ruimte van het logo, kolom 2 pakt de rest (auto) */
-    grid-template-columns: auto 1fr; 
-    align-items: center; /* Zorgt dat alles verticaal mooi in het midden staat */
-    padding: 10px 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #D1D1D1;
-    height: 60px;
+/* header */
+header {
+    display:flex;
+    align-items:center; /* Zorgt dat alles verticaal mooi in het midden staat */
+    
+}
+header ul {
+    list-style: none;
+    display: none;
 }
 
-.header-actions {
-    justify-self: end; /* Duwt de menu-knop naar de rechterkant */
+header nav{
+    align-items:self-end;
+}
+
+/* hamburger menu bij desktop */
+/* display none bij mobile */
+header form {
+    display: none;
+}
+
+header img {
+    grid-column: 1/1;
+    height: 2em;
 }
 
 .logo {
-    height: 30px; /* Houd het logo compact op mobiel */
+    height: 30px;
 }
 
 /* Hero section */
@@ -198,6 +208,10 @@ main {
     border-bottom-right-radius: 5px;
 }
 
+/* aspect ratio zodat de kaarten in verhouding blijven */
+.section1, .section2, .section3 {
+    aspect-ratio: 3 / 4;
+}
 .section-footer-link a {
     color: white;
     text-decoration: none;
