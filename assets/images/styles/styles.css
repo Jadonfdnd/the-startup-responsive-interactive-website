@@ -2,28 +2,94 @@ main {
     display: grid;
     grid-template-columns: 1fr; /* Eén kolom die de volle breedte pakt */
     gap: 20px; /* Automatische ruimte tussen je secties */
-    
 }
 
-/* Elke section is nu een griditem */
+/* Elke section is een griditem */
 .hero-section, 
 .pakket-nav, 
 .search-form {
     width: 100%;
 }
+
+/* top-bar aanpassing */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: #F3F6F8; 
+    padding: 0 2em;
+    height: 3em;
+}
+
+.doelgroep-tabs {
+    display: flex;
+    align-items: flex-end; 
+}
+
+/* De algemene tab-stijl */
+.tab, .tab-active {
+    padding: 8px 20px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    color: #3E32E3; /* PostNL Blauw */
+    transition: all 0.2s ease;
+}
+
+/*active tab */
+.tab-active {
+    background:white;
+    color: #ED6B00; 
+    border: 1px solid #D1D1D1;
+    border-bottom: 1px solid #ffffff; 
+    border-radius: 4px 4px 0 0;
+    margin-bottom: -1px; /* schuift */
+    margin-left:3em;
+}
+
+.top-utils {
+    display: flex;
+    align-items: center; /* Rechterkant centreren we verticaal */
+    gap: 15px;
+}
+
+/* De taalkeuze en iconen */
+.lang-btn {
+    background: none;
+    border: none;
+    color: #3E32E3;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
 /* header */
 header {
     display:flex;
     align-items:center; /* Zorgt dat alles verticaal mooi in het midden staat */
-    
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 1001; /* Hoger dan de nav */
+    background: #fff;
 }
+
 header ul {
     list-style: none;
     display: none;
 }
 
 header nav{
-    align-items:self-end;
+    display: none; /* Veranderd van display:flex naar none voor JS interactie op mobiel */
+    position: absolute;
+    top: 100%; /* Begint direct waar de header stopt */
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 1000; /* Lager dan de header balk */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 /* hamburger menu bij desktop */
@@ -33,13 +99,133 @@ header form {
 }
 
 header img {
-    grid-column: 1/1;
-    height: 2em;
+    height: 3em;
 }
 
 .logo {
-    height: 30px;
+    height: 3em;
 }
+
+/* hamburger menu */
+.hamburger {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px; /* Dikte van de streepjes */
+    background-color: #3E32E3; /* Het specifieke PostNL blauw */
+    border-radius: 2px;
+}
+
+/* mediaquer voor hamburger menu */
+@media (min-width: 1024px) {
+    .hamburger {
+        display: none;
+    }
+
+    header {
+        padding: 0 40px;
+        height: 80px;
+    }
+
+    header nav {
+        display: flex; /* Zichtbaar op desktop */
+        position: static;
+        width: auto;
+        box-shadow: none;
+        margin-left: 40px;
+        align-items: center;
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+    /* lijst tonen */
+    header ul {
+        display: flex;
+        gap: 24px;
+        margin: 0;
+        padding: 0;
+    }
+
+    header ul li {
+        color:#3E32E3;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    /* login knop styling */
+    header nav button {
+        background: none;
+        border: none;
+        color: #3e32e3;
+        font-weight: 700;
+        font-size: 16px;
+        cursor: pointer;
+        margin-left:auto;
+        margin-right: 1em;
+    }
+
+    /* zoek form */
+    header form {
+        display: flex;
+        border:1px solid #d1d1d1;
+        border-radius: 4px;
+        padding: 5px 8px;
+    }
+
+    header form input {
+        border: none;
+        outline: none;
+        padding: 8px
+    }
+    header form label {
+        display: none;
+    }
+}
+
+@media (max-width: 1023px) {
+    header {
+        height: 64px;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* inreactie met js animaties */
+    header nav.open {
+        display: flex;
+        flex-direction: column;
+        padding: 2em;
+        top: 64px;
+    }
+
+    .hamburger {
+        order: 2;
+    }
+
+    header img {
+        height:3em;
+    }
+}
+
+/* hamburger animatie */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0; /* Middelste lijn verdwijnt */
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
 
 /* Hero section */
 .hero-section {
@@ -49,7 +235,7 @@ header img {
     padding: 40px 20px;
     background-color: white;
     overflow: hidden; /*background images zorgen niet voor scrollbar*/
-    max-width: fit-content;
+    max-width: 100%;
 }
 
 /* kan weg ivm globale styleguide */
@@ -60,11 +246,10 @@ header img {
     line-height: 1.1;
     margin-bottom: 15px;
     font-weight: 800;
-    /* mediaquery line width.. */
 }
 
 .hero-section button {
-    background-color: #6262ff; /* The specific button blue */
+    background-color: #3E32E3; /* Corrected to PostNL blue */
     color: white;
     border: none;
     padding: 12px 30px;
@@ -73,17 +258,41 @@ header img {
     font-size: 1rem;
     cursor: pointer;
     margin-bottom: 20px;
-    
+}
+
+/* hero section responsive*/
+@media (min-width: 1024px) {
+    .hero-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        align-items: center;
+        padding: 5em 4em;
+    }
+
+    .hero-section img {
+        grid-column: 2;
+        grid-row: 1 / span 3;
+        width: 100%;
+        height: auto;
+    }
+
+    .hero-section h1 { grid-column: 1; grid-row: 1; }
+    .hero-section p { grid-column: 1; grid-row: 2; }
+    .hero-section form { grid-column: 1; grid-row: 3; }
+    .hero-section a { display: none; }
 }
 
 /* Pakket Navigatietabs*/
 .pakket-nav {
-    background-color: #ffffff;
+    background-color: #F1F1F2;
     border-radius: 8px;
     margin: 0;
     width: 100%;
     display: flex;
     flex-direction: column;
+    border: 1px solid #D1D1D1;
+    min-width: 370px;
 }
 
 /* tab balk */
@@ -120,7 +329,7 @@ header img {
 /* Formulier Styling */
 .tabcontent {
     padding: 25px 20px;
-    background-color: f1f1f2;
+    background-color:#F1F1F2;
 }
 
 .tabcontent form {
@@ -135,32 +344,24 @@ header img {
     color: #333333;
 }
 
-.tabcontent input {
+.tabcontent input, .tabcontent select {
     padding: 12px;
     border: 1px solid #D1D1D1;
     border-radius: 4px;
     font-size: 1rem;
-    color: #666666;
+    height: 48px; /* Gefixed voor klikbaarheid */
+    box-sizing: border-box;
 }
 
 .tabcontent button {
-    background-color: #6262FF;
+    background-color: #3E32E3;
     color: white;
     padding: 14px;
     border: none;
     border-radius: 6px;
     font-weight: 700;
     font-size: 1rem;
-    margin-top: 10px;
     cursor: pointer;
-}
-
-.tabcontent input, 
-.tabcontent select, 
-.tabcontent button {
-    height: 1em; 
-    width: 75%;
-    /* font-size: 16px; */
 }
 
 .search-form {
@@ -182,6 +383,7 @@ header img {
     height: 48px;
     border: 1px solid #D1D1D1;
     border-radius: 4px 0 0 4px;
+    padding-left: 10px;
 }
 
 .form-button {
@@ -202,197 +404,98 @@ header img {
     text-decoration: none;
     font-weight: 700;
     font-size: 1rem;
-    display: block; /* Zorgt dat de link de hele breedte pakt */
-    /* min-height: 0.5em; */
+    display: block; 
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    margin-top: auto; /* Zorgt dat de footer altijd onderaan staat */
 }
 
 /* aspect ratio zodat de kaarten in verhouding blijven */
-.section1, .section2, .section3 {
+
+/* aspect ratio zodat de kaarten in verhouding blijven */
+.section1, .section2, .section3, .section6, .section7, .section8 {
+    display: flex;
+    flex-direction: column;
     aspect-ratio: 3 / 4;
+    border-radius: 5px;
+    
+    /* MINIMALE AFMETINGEN */
+    min-height: 375px; 
+    min-width: 280px;  
+    
+    overflow: hidden;
 }
+.section1, .section2, .section3,  .section6, .section7 { 
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 3 / 4;
+    border-radius: 5px;
+    min-height: 25em;
+    overflow: hidden;
+
+    max-width: 455px; 
+    max-height: 600px; 
+
+    /* Centreren in hun grid-vak op desktop */
+    justify-self: center; 
+    width: 100%;
+}
+
 .section-footer-link a {
     color: white;
     text-decoration: none;
 }
-.section1 {
-    display: grid;
-    grid-template-columns: 1fr;
-    background-color: #D83D00;
-    border-radius: 5px;
-    min-height: 30em;
 
+.section1 { background-color: #D83D00; }
+.section1 img { width: 80px; margin: 2em; }
+.section1 h3, .section1 p { padding: 0 20px; color: white; }
+.section1 div { background-color: #C23400; }
+
+.section2 { background-color: #6161FF; }
+.section2 img { width: 80px; margin: 2em; }
+.section2 h3, .section2 p { padding: 0 20px; color: white; }
+.section2 div{ background-color: #4E4EE2; }
+
+.section3 { background-color: #001A73; }
+.section3 img { width: 80px; margin: 2em; }
+.section3 h3, .section3 p { padding: 0 20px; color: white; }
+.section3 div { background-color: #001252; }
+
+/* @mediaq info cards */
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 2em 4em;
+    }
+
+    .hero-section, .pakket-nav, .search-form, .section4, .section5, .section8 {
+        grid-column: 1 / span 3;
+    }
 }
-
-.section1 img {
-    height: em;
-    margin: 2em;
-    
-    
-}
-
-
-.section1 h3 {
-    font-size: 1.2rem;
-    color:white; 
-    margin: 0;
-}
-
-.section1 p {
-    font-size: 0.95rem;
-    color: white;
-    line-height: 1.5;
-    
-}
-
-.section1 div {
-    background-color: #C23400;
-}
-
-/* section2 blue */
-.section2 {
-    display: grid;
-    grid-template-columns: 1fr;
-    background-color: #6161FF;
-    border-radius: 5px;
-    min-height: 30em;
-
-}
-
-.section2 img {
-    height: em;
-    margin: 2em;
-    
-    
-}
-
-
-.section2 h3 {
-    font-size: 1.2rem;
-    color:white; 
-    margin: 0;
-}
-
-.section2 p {
-    font-size: 0.95rem;
-    color: white;
-    line-height: 1.5;
-    
-}
-
-.section2 div{
-    background-color: #4E4EE2;
-}
-
-
-/* info blocks */
-.section3 {
-    display: grid;
-    grid-template-columns: 1fr;
-    background-color: #D83D00;
-    border-radius: 5px;
-    min-height: 30em;
-
-}
-
-.section3 img {
-    height: em;
-    margin: 2em;
-    
-    
-}
-
-.section3 h3 {
-    font-size: 1.2rem;
-    color:white; 
-    margin: 0;
-}
-
-.section3 p {
-    font-size: 0.95rem;
-    color: white;
-    line-height: 1.5;
-    
-}
-
-/* info blocks */
-.section3 {
-    display: grid;
-    grid-template-columns: 1fr;
-    background-color: #001A73;
-    border-radius: 5px;
-    min-height: 30em;
-
-}
-
-.section3 img {
-    height: em;
-    margin: 2em;
-    
-    
-}
-
-
-.section3 h3 {
-    font-size: 1.2rem;
-    color:white; 
-    margin: 0;
-}
-
-.section3 p {
-    font-size: 0.95rem;
-    color: white;
-    line-height: 1.5;
-    
-}
-
-.section3 div {
-    background-color: #001252;
-}
-
 
 /* content info cards */
-
-.section4 img {
-    width: 100%;
-}
-
-.section4 {
-    background-color: #F1F1F2;
-    margin-top: 1em;
-}
-
+.section4 img { width: 100%; }
+.section4 { background-color: #F1F1F2; margin-top: 1em; }
 
 .section5 {
     background-color: white;
-    /* veranderen? */
     display: grid;
     gap: 15px;
     padding: 20px;
+    border: 1px solid #eee;
 }
 
-.section5 h3 {
-    color: #ED6B00; 
-    font-size: 1.4rem;
-    margin: 0;
-}
-.section5 ul {
-    list-style:  none;
-    margin: 0;
-    padding: 0;
-}
-
+.section5 h3 { color: #ED6B00; font-size: 1.4rem; margin: 0; }
+.section5 ul { list-style: none; margin: 0; padding: 0; }
 .section5 li {
     position: relative;
-    padding-left: 35px; /* Ruimte voor het vinkje */
+    padding-left: 35px;
     margin-bottom: 12px;
     line-height: 1.4;
     font-size: 16px;
     color: #333;
 }
 
-/* vinkje-icon toevoegen via CSS zonder html aan te passen */
 .section5 li::before {
     content: '';
     position: absolute;
@@ -404,164 +507,61 @@ header img {
 }
 
 .btn-account {
-    /* Gedrag en Formaat */
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;             /* Volledige breedte voor mobiel */
-    height: 3em;            /* Ideale hoogte voor duimbesturing */
-    
-    /* Kleuren en Tekst */
+    width: 100%;
+    height: 3em;
     background-color: white;
     color: #3E32E3;
-    text-decoration: none;     /* Verwijder de onderstreping */
+    text-decoration: none;
     border: 2px solid #3E32E3;
     font-weight: 700;
     font-size: 16px;
     border-radius: 4px;
-    box-sizing: border-box;
     transition: background-color 0.2s;
 }
 
-/* Effect wanneer je de knop indrukt op je scherm */
-.btn-account:active {
-    background-color: #2b22a8;
-}
-
 /* info tabs 2 */
-/* Veel post versturen */
-
-.section6 {
-    display: grid;
-    grid-template-columns: 1fr;
+.section6, .section7 {
+    display: flex;
+    flex-direction: column;
     background-color: #F1F1F2;
     border-radius: 5px;
-    min-height: 30em;
-    margin: 1em;
-    
-
-}
-
-.section6 img {
-    height: 6em;
-    margin: 2em;
-    
-    
-}
-
-
-.section6 h3 {
-    font-size: 1.2rem;
+    min-height: 20em;
     margin: 0;
-    margin-left: 1em;
-    
-
 }
 
-.section6 p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-left: 1em;
-    margin-bottom: 0;
-    margin-top: 0;
-}
+.section6 img, .section7 img { height: 6em; width: fit-content; margin: 2em; }
+.section6 h3, .section7 h3, .section6 p, .section7 p { padding: 0 1em; margin: 0.5em 0; }
+.section6 div, .section7 div { background-color: #E7E8EB; margin-top: auto; }
+.section6 a, .section7 a { color: #3E32E3; }
 
-.section6 div {
-    background-color: #E7E8EB;
+.section8 img { width: 100%; }
+.section8 { margin-top: 1em; }
 
-}
-
-.section6 a {
-    color: #3E32E3;
-}
-
-/* Altijd de juiste oplossingen */
-.section7 {
-    display: grid;
-    grid-template-columns: 1fr;
-    background-color: #F1F1F2;
-    border-radius: 5px;
-    min-height: 30em;
-    margin: 1em;
-    
-
-}
-
-.section7 img {
-    height: 6em;
-    margin: 2em;
-    
-    
-}
-
-
-.section7 h3 {
-    font-size: 1.2rem;
-    margin: 0;
-    margin-left: 1em;
-    
-
-}
-
-.section7 p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-left: 1em;
-    margin-bottom: 0;
-    margin-top: 0;
-}
-
-.section7 div {
-    background-color: #E7E8EB;
-    
-}
-
-.section7 a {
-    color: #3E32E3;
-}
-
-
-/* Versturen naar het buitenland */
-
-.section8 img {
-    width: 100%;
-}
-
-.section8 {
-    margin-top: 1em;
-}
-/* 2 buttons 1 outline een geen */
-
-
-
-/* VARIANT 1: De Outline Button (Blauwe rand, witte vulling) */
-/* Zoals te zien in image_e31f4a.png */
 .btn-outline {
     background-color: #ffffff;
-    color: #3E32E3;           /* PostNL Actieblauw */
+    color: #3E32E3;
     border: 1.5px solid #3E32E3;
-    height: 2em;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    font-weight: 600;
 }
 
 .btn-link {
     color: #3E32E3;
     text-decoration: none;
     font-weight: 600;
-    font-size: 15px;
-    display: inline-flex;
-    align-items: center;
+    margin-left: 1em;
 }
-
 
 /* accordion footer voor mobile */
 .site-footer {
-    background-color: #F3F6F8; /* De lichtgrijze achtergrond uit image_24178d */
-    padding: 0;
+    background-color: #F3F6F8;
     border-top: 1px solid #D1D1D1;
-}
-
-.footer-group {
-    border-bottom: 1px solid #D1D1D1;
 }
 
 .footer-group h4 {
@@ -571,78 +571,37 @@ header img {
     padding: 20px;
     margin: 0;
     font-size: 16px;
-    color: #002E5D; /* PostNL Navy */
+    color: #002E5D;
     cursor: pointer;
 }
 
-/* Het blauwe pijltje uit image_24178d */
 .footer-group h4::after {
     content: '';
-    width: 12px;
-    height: 12px;
-    border-right: 2px solid #3E32E3; /* PostNL Blauw */
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #3E32E3;
     border-bottom: 2px solid #3E32E3;
-    transform: rotate(45deg); /* Pijltje omlaag */
+    transform: rotate(45deg);
     transition: transform 0.3s;
 }
 
-/* De lijst met links verbergen op mobiel */
 .footer-group ul {
     list-style: none;
     padding: 0 20px 20px 20px;
     margin: 0;
-    display: none; /* Standaard inklappen */
-    max-height: 0;       /* Begin op 0 hoogte */
-    overflow: hidden;    /* Verberg de tekst */
-    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    display: none;
 }
 
-.footer-group li {
-    padding: 8px 0;
-    color: #333;
-    font-size: 14px;
-}
+.footer-group.is-open ul { display: block; }
+.footer-group.is-open h4::after { transform: rotate(-135deg); }
 
-/* interactive gedeelte opzoeken..... */
-.footer-group.is-open ul {
-    display: block; /* Toon de links */
-    max-height: 500px;   /* Geef het genoeg ruimte om uit te klappen */
-    padding: 0 20px 20px 20px;
-    opacity: 1;
-}
-
-/* feedforward pijltje draaien en replace met css */
-.footer-group.is-open h4::after {
-    transform: rotate(-135deg); /* Pijltje omhoog draaien */
-}
-
-.footer-group h4 {
-    cursor: pointer;
-}
-
-/*  feedback voor desktop gebruikers */
-.footer-group h4:hover {
-    background-color: rgba(0, 0, 0, 0.02);
-}
-
-/* responsive (naast elkaar) */
 @media (min-width: 600px) {
     .footer-inner {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 gelijke kolommen */
+        grid-template-columns: repeat(4, 1fr);
         gap: 30px;
         padding: 40px;
     }
-
-    .footer-group h4::after {
-        display: none; /* Pijltjes weg op desktop */
-    }
-
-    .footer-group ul {
-        display: block; /* Altijd zichtbaar op desktop */
-    }
-    
-    .footer-group {
-        border-bottom: none;
-    }
+    .footer-group h4::after { display: none; }
+    .footer-group ul { display: block; }
 }

@@ -23,3 +23,16 @@ document.querySelectorAll('.footer-group h4').forEach(header => {
         group.classList.toggle('is-open');
     });
 });
+
+
+// hamburger menu open dicht
+
+document.querySelectorAll('.hamburger').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const nav = document.querySelector('header nav');
+        
+        // Toggle de class op zowel de knop (voor het kruisje) als de nav
+        btn.classList.toggle('active');
+        nav.classList.toggle('open');
+    });
+});

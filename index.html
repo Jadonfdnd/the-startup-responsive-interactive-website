@@ -28,9 +28,16 @@
         
     </div>
 
-    
+
     <header>
-        <img src="/assets/icons/Vector.svg" alt="">
+        <img src="/assets/icons/Vector.svg" alt="PostNL">
+        <!-- hamburger menu -->
+        <button class="hamburger" id="hamburgerMenu">
+            <!-- span voor strepen -->
+             <span></span>
+             <span></span>
+             <span></span>
+        </button>
         <nav>
             <ul>
                 <li>Versturen</li>
@@ -38,11 +45,11 @@
                 <li>Webshop</li>
                 <li>Service en Contact</li>
             </ul>
-            <!-- button zonder  -->
+            <!-- button zonder  -->  
             <button>Inloggen </button>
             <form>
              <label for="Search">Zoeken</label> 
-             <input type="text" id="Search" placeholder="Ik ben op zoek naar...">
+             <input type="text" id="Search" placeholder="">
              <button type="submit">🔍</button>
             </form>
         </nav>
@@ -54,7 +61,7 @@
             <p>Verstuur het voordelig als brievenbuspakje</p>
             <form><button>Lees meer</button></form>
             <a href="#todo">Link</a>
-            <img src="/assets/images/postnldoos.jpg" alt="">
+            <img src="/assets/images/Postlijn.svglt=" alt="">
         </section>
 
         <section class="pakket-nav">
@@ -71,17 +78,18 @@
                 <!-- check workshop forms -->
                 <form> 
                     <label for="barcode">Barcode</label>
-                    <input type="text" id="barcode" required />
+                    <input type="text" id="barcode" required/>
 
                     <label for="ontvanger">Land van de Ontvanger</label>
                     <select id="ontvanger" required>
+                        <option value="" disabled selected>Selecteer een land</option>
                         <option value="Nederland">Nederland</option>
                         <option value="België">België</option>
                         <option value="Duitsland">Duitsland</option>
                     </select>
                         <!-- eventueel verplichte postcode 1234ab -->
                     <label for="postcode">Postcode</label>
-                    <input type="text" id="postcode" required />
+                    <input type="text" id="postcode" required/>
 
                     <button type="submit">Zoeken</button>
                 </form>
@@ -91,13 +99,13 @@
         <form class="search-form">
             <label class="form-label" for="Search">Ik ben op zoek naar...</label>
             <div class="input-wrapper">
-                <input class="form-input" type="text" id="Search" placeholder="Wat zoek je?" />
+                <input class="form-input" type="text" placeholder="Wat zoek je?" />
             </div>
             <button class="form-button" type="submit">🔍</button>
         </form>
 
         <section class="section1">
-            <img src="/assets/images/Illustration Package safeplace.png" alt="">
+            <img src="/assets/images/Illustration-Package-safeplace.png" alt="">
             <h3>Voorkeuren bezorging</h3>
             <p>Vaak op pad? Bepaal zelf waar we je pakketten bezorgen:</p>
             <div class="section-footer-link"><a href="Link">Link</a></div>
