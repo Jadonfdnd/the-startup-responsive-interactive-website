@@ -279,7 +279,7 @@ header img {
     background-color: var(--postnl-white);
     
     /* De achtergrond afbeelding instellen */
-    background-image: url('/assets/images/Postlijn.svg');
+    background-image: url('assets/images/Postlijn.svg');
     background-repeat: no-repeat;
     background-position: bottom center; /* Lijn onder de tekst op mobiel */
     background-size: 120%; /* Iets groter zodat hij de breedte vult */
