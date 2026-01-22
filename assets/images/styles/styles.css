@@ -1,7 +1,46 @@
+/* 1. Style Guide / Variabelen */
+:root {
+    --postnl-blue: #3E32E3;
+    --postnl-orange: #ED6B00;
+    --postnl-dark-blue: #002E5D;
+    --postnl-light-gray: #F3F6F8;
+    --postnl-border-gray: #D1D1D1;
+    --postnl-white: #ffffff;
+    
+    --border-radius: 4px;
+    --card-radius: 5px;
+}
+
+/* 2. Algemene stijlen (Reset & Global) */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* focusrand */
+a:focus, button:focus, input:focus {
+    outline: 3px solid #ED6B00; /* PostNL Oranje */
+    outline-offset: 2px;
+}
+
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--postnl-white);
+}
+
+
+
+a:focus, button:focus, input:focus {
+    outline: 3px solid #ED6B00; /* PostNL Oranje */
+    outline-offset: 2px;
+}
 main {
     display: grid;
-    grid-template-columns: 1fr; /* Eén kolom die de volle breedte pakt */
-    gap: 20px; /* Automatische ruimte tussen je secties */
+    grid-template-columns: 1fr;
+    gap: 20px; 
+    width: 100%;
 }
 
 /* Elke section is een griditem */
@@ -9,6 +48,9 @@ main {
 .pakket-nav, 
 .search-form {
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* top-bar aanpassing */
@@ -82,7 +124,7 @@ header ul {
 }
 
 header nav{
-    display: none; /* Veranderd van display:flex naar none voor JS interactie op mobiel */
+    display: none; /* Veranderd van displayflex naar none voor JS interactie op mobiel */
     position: absolute;
     top: 100%; /* Begint direct waar de header stopt */
     left: 0;
@@ -228,59 +270,81 @@ header img {
 
 
 /* Hero section */
+/* Hero section Basis (Mobiel) */
 .hero-section {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /*vanuit links alignen*/
-    padding: 40px 20px;
-    background-color: white;
-    overflow: hidden; /*background images zorgen niet voor scrollbar*/
-    max-width: 100%;
+    align-items: flex-start;
+    padding: 40px 20px 180px 20px; /* Extra padding onderaan voor de lijn op mobiel */
+    background-color: var(--postnl-white);
+    
+    /* De achtergrond afbeelding instellen */
+    background-image: url('/assets/images/Postlijn.svg');
+    background-repeat: no-repeat;
+    background-position: bottom center; /* Lijn onder de tekst op mobiel */
+    background-size: 120%; /* Iets groter zodat hij de breedte vult */
+    
+    position: relative;
+    overflow: hidden;
 }
 
-/* kan weg ivm globale styleguide */
 .hero-section h1 {
     font-size: 2.2rem;
-    max-width: 12ch;
-    color: #002e5d;
+    max-width: 15ch;
+    color: var(--postnl-dark-blue);
     line-height: 1.1;
     margin-bottom: 15px;
     font-weight: 800;
 }
 
-.hero-section button {
-    background-color: #3E32E3; /* Corrected to PostNL blue */
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-bottom: 20px;
+.hero-section p {
+    font-size: 1.1rem;
+    color: var(--postnl-dark-blue);
+    margin-bottom: 25px;
+    max-width: 30ch;
 }
 
-/* hero section responsive*/
+.hero-section button {
+    background-color: var(--postnl-blue);
+    color: var(--postnl-white);
+    border: none;
+    padding: 12px 32px;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+/* Desktop aanpassingen (1024px+) */
 @media (min-width: 1024px) {
     .hero-section {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto auto;
-        align-items: center;
-        padding: 5em 4em;
+       
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        min-height:770px; /* Zorgt voor genoeg hoogte voor de lijn */
+     
+        
+        /* De achtergrondafbeelding perfect positioneren */
+        background-image: url('/assets/images/Postlijn.svg');
+        background-repeat: no-repeat;
+        background-position: right center; /* Lijn strak naar rechts */
+        background-size: contain; /* Zorgt dat de lijn niet wordt afgesneden */
     }
 
-    .hero-section img {
-        grid-column: 2;
-        grid-row: 1 / span 3;
-        width: 100%;
-        height: auto;
+    .hero-section h1 {
+        font-size: 4rem; /* Grote kop zoals in het voorbeeld */
+        max-width: 12ch; /* Breekt de tekst op het juiste punt */
+        text-align: left;
     }
 
-    .hero-section h1 { grid-column: 1; grid-row: 1; }
-    .hero-section p { grid-column: 1; grid-row: 2; }
-    .hero-section form { grid-column: 1; grid-row: 3; }
-    .hero-section a { display: none; }
+    .hero-section p {
+        font-size: 1.25rem;
+        max-width: 40ch;
+        text-align: left;
+    }
 }
 
 /* Pakket Navigatietabs*/
@@ -465,7 +529,7 @@ header img {
 @media (min-width: 768px) {
     main {
         grid-template-columns: 1fr 1fr 1fr;
-        padding: 2em 4em;
+        /* padding: 2em 4em; */
     }
 
     .hero-section, .pakket-nav, .search-form, .section4, .section5, .section8 {
@@ -479,10 +543,15 @@ header img {
 
 .section5 {
     background-color: white;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 15px;
     padding: 20px;
-    border: 1px solid #eee;
+   
+    
+    max-width: 1200px; /* Dezelfde breedte als je header/hero voor eenheid */
+    margin: 0 auto;    /* Dit houdt de sectie in het midden */
+    width: 100%;
 }
 
 .section5 h3 { color: #ED6B00; font-size: 1.4rem; margin: 0; }
@@ -505,6 +574,14 @@ header img {
     height: 20px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ED6B00'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
 }
+
+.section5 img {
+    width:100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+
 
 .btn-account {
     display: flex;
@@ -560,8 +637,11 @@ header img {
 
 /* accordion footer voor mobile */
 .site-footer {
-    background-color: #F3F6F8;
+    background-color: var(--postnl-light-gray);
     border-top: 1px solid #D1D1D1;
+    position: relative;
+
+
 }
 
 .footer-group h4 {
@@ -571,7 +651,8 @@ header img {
     padding: 20px;
     margin: 0;
     font-size: 16px;
-    color: #002E5D;
+    color: var(--postnl-dark-blue);
+    font-family: var(--font-main);
     cursor: pointer;
 }
 
