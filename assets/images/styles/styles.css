@@ -541,6 +541,23 @@ header img {
 .section4 img { width: 100%; }
 .section4 { background-color: #F1F1F2; margin-top: 1em; }
 
+.section4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+    padding: 20px;
+}
+
+.section4 button{
+    width: 45em;
+    height: 48px;
+    margin: 1em;
+    border-radius: 4px;
+    background-color: #3E32E3;
+    color: white;
+    border: none;
+}
 .section5 {
     background-color: white;
     display: flex;
