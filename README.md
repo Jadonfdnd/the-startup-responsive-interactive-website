@@ -44,7 +44,7 @@ De interface bevat diverse interacties:
 
 Voorbeeld hiervan:
 
-https://github.com/Jadonfdnd/the-startup-responsive-interactive-website/blob/main/index.html#L35-L40
+https://github.com/Jadonfdnd/the-startup-responsive-interactive-website/blob/be52374f1113a9dae58295b7d74f203c14625423/index.html#L35-L40
 
 **JavaScript**
 * Menu toggler: Een script dat de .open class toevoegt aan de navigatie.
