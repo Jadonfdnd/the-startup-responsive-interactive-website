@@ -42,6 +42,10 @@ De interface bevat diverse interacties:
 * CSS Grid & Flexbox: De layout is opgebouwd met CSS Grid voor de grote structuren en Flexbox voor de uitlijning binnen componenten.
 * Code Conventies: Ik heb gewerkt met overzichtelijke CSS-nesting en duidelijke commentaren per sectie om de onderhoudbaarheid te vergroten.
 
+Voorbeeld hiervan:
+
+https://github.com/Jadonfdnd/the-startup-responsive-interactive-website/blob/main/index.html#L35-L40
+
 **JavaScript**
 * Menu toggler: Een script dat de .open class toevoegt aan de navigatie.
 * Footer Logic: Een forEach loop die zorgt dat de accordion-secties onafhankelijk van elkaar open en dicht kunnen klappen.
