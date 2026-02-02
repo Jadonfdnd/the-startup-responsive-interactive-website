@@ -38,7 +38,7 @@ De interface bevat diverse interacties:
 
 ## Kenmerken
 **HTML & CSS**
-* Structuur: Semantische HTML (gebruik van <header>, <main>, <section>, <footer>).
+* Structuur: Semantische HTML (gebruik van `<header>`, `<main>`, `<section>`, `<footer>`).
 * CSS Grid & Flexbox: De layout is opgebouwd met CSS Grid voor de grote structuren en Flexbox voor de uitlijning binnen componenten.
 * Code Conventies: Ik heb gewerkt met overzichtelijke CSS-nesting en duidelijke commentaren per sectie om de onderhoudbaarheid te vergroten.
 
